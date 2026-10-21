@@ -19,7 +19,7 @@ const Auth = {
 
   verificarAcesso() {
     const paginaAtual = window.location.pathname;
-    const ehPaginaLogin = paginaAtual.endsWith('login.html') || paginaAtual.endsWith('/') && !paginaAtual.includes('.html');
+    const ehPaginaLogin = paginaAtual.endsWith('login.html') || paginaAtual.endsWith('registro.html') || paginaAtual.endsWith('/') && !paginaAtual.includes('.html');
 
     if (!this.estaAutenticado()) {
       if (!ehPaginaLogin && !paginaAtual.endsWith('index.html')) {
@@ -28,7 +28,7 @@ const Auth = {
       }
     } else {
       // Se estiver logado e tentar abrir o login ou raiz, redireciona ao dashboard
-      if (paginaAtual.endsWith('login.html') || paginaAtual.endsWith('index.html') || paginaAtual.endsWith('/')) {
+      if (paginaAtual.endsWith('login.html') || paginaAtual.endsWith('registro.html') || paginaAtual.endsWith('index.html') || paginaAtual.endsWith('/')) {
         window.location.href = 'dashboard.html';
         return false;
       }
