@@ -43,6 +43,13 @@ const Auth = {
     return data;
   },
 
+  async registrar(nome, email, senha, codigo) {
+    const data = await API.post('/auth/registro', { nome, email, senha, codigo });
+    API.setToken(data.token);
+    API.setUsuario(data.usuario);
+    return data;
+  },
+
   async logout() {
     try {
       await API.post('/auth/logout', {});
