@@ -7,26 +7,21 @@ const CONFIG = {
   PROD_API_URL: 'https://backend-provas.vercel.app/api',
 
   // URL para testes em ambiente local
-  get LOCAL_API_URL() {
-    const port = window.location.port || '3000';
-    return `http://localhost:${port}/api`;
-  },
+  LOCAL_API_URL: 'http://localhost:5000/api',
 
   // Se houver uma URL configurada no localStorage, use-a.
   // Caso contrário, usa a API da Vercel ou localhost.
   get API_URL() {
     const customUrl = localStorage.getItem('SETOR_PROVAS_API_URL');
     // url da vercel salva no navegador e sempre velha, descarta
-    if (customUrl && customUrl.includes('vercel.app')) {
+    const emLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    if (customUrl && (customUrl.includes('vercel.app') || (!emLocal && customUrl.includes('localhost')))) {
       localStorage.removeItem('SETOR_PROVAS_API_URL');
     } else if (customUrl) return customUrl.replace(/\/$/, '');
 
-    // Se estiver rodando pelo servidor local (porta 3000 ou 5000)
+    // rodando local: api sempre na 5000
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      const port = window.location.port;
-      if (port === '3000' || port === '5000') {
-        return `http://localhost:${port}/api`;
-      }
+      return this.LOCAL_API_URL;
     }
 
     // Por padrão (produção na Vercel ou quando aberto sem servidor):
