@@ -58,28 +58,9 @@
       Não tem conta? <a href="registro.html" style="color: var(--primary); font-weight: 600;">Criar conta</a>
     </div>
 
-    <!-- Botões de preenchimento rápido para demonstração e testes -->
+    <!-- Seleção da API -->
     <div class="demo-credentials-box">
-      <div class="demo-title">
-        <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V6h2v4z"/></svg>
-        Acesso rápido para testes (Perfis pré-configurados):
-      </div>
-      <div class="demo-buttons-grid">
-        <button type="button" class="btn-demo-fill" onclick="preencherDemo('admin@colegio.edu.br', 'admin123')">
-          👑 <strong>Admin</strong><br><small>admin@colegio.edu.br</small>
-        </button>
-        <button type="button" class="btn-demo-fill" onclick="preencherDemo('carlos@colegio.edu.br', 'senha123')">
-          👨‍🏫 <strong>Professor Carlos</strong><br><small>Matemática/Física</small>
-        </button>
-        <button type="button" class="btn-demo-fill" onclick="preencherDemo('setor@colegio.edu.br', 'setor123')">
-          📋 <strong>Setor de Provas</strong><br><small>Mariana Lima</small>
-        </button>
-        <button type="button" class="btn-demo-fill" onclick="preencherDemo('aprovador@colegio.edu.br', 'aprovador123')">
-          🖨️ <strong>Aprovador Final</strong><br><small>Roberto Mendes</small>
-        </button>
-      </div>
-
-      <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 0.4rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 0.4rem; flex-wrap: wrap;">
         <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">API Backend:</span>
         <button type="button" id="btn-api-vercel" class="pill-btn" onclick="alternarApi('vercel')" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">☁️ Vercel (Online)</button>
         <button type="button" id="btn-api-local" class="pill-btn" onclick="alternarApi('local')" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">💻 Localhost</button>
@@ -146,11 +127,6 @@
         }
       });
     });
-
-    function preencherDemo(email, senha) {
-      document.getElementById('email').value = email;
-      document.getElementById('senha').value = senha;
-    }
 
     function mostrarAlerta(msg, tipo = 'danger') {
       const el = document.getElementById('login-alert');
